@@ -9,9 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.4.19"
+    "vue": "^3.4.19",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@vitejs/plugin-vue": "^5.0.4",
     "vite": "^5.1.4"
   }
