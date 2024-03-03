@@ -9,8 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.4.19",
-    "zustand": "^4.5.2"
+    "vue": "^3.4.19"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
