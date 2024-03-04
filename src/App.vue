@@ -1,6 +1,6 @@
 <template>
   <Congrats v-if="words.length === 0" />
-  <div>Typing Game</div>
+  <div class="title">Typing Game</div>
   <!-- Typing Options -->
   <div>
     <input @input="handleInput" @focus="setBlur(false)" @blur="setBlur(true)" />
@@ -13,7 +13,10 @@
   <ul>
     <li v-for="word in words" :class="checkWord(word, typedword)">
       <ul>
-        <li v-for="letter in word">
+        <li
+          v-for="(letter, index) in word"
+          :class="checkLetter(letter, index, word)"
+        >
           {{ letter }}
         </li>
       </ul>
@@ -57,6 +60,11 @@ const checkWord = (w, c = null) => {
   if (notFocused.value) return "blur";
   return w.startsWith(c) ? "correct" : "wrong";
 };
+
+const checkLetter = (l, i, w) => {
+  if (!w.startsWith(typedword.value)) return "";
+  if (l === typedword.value[i]) return "correct-character";
+};
 </script>
 
 <style scoped>
@@ -65,6 +73,8 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  font-size: x-large;
+  font-weight: bold;
 }
 
 .correct {
@@ -77,5 +87,13 @@ ul {
 
 .blur {
   filter: blur(5px);
+}
+
+.title {
+  font-size: xx-large;
+}
+
+.correct-character {
+  color: rgb(21, 255, 0);
 }
 </style>
