@@ -1,4 +1,5 @@
 <template>
+  <Congrats v-if="words.length === 0" />
   <div>Typing Game</div>
   <!-- Typing Options -->
   <div>
@@ -22,7 +23,9 @@
 
 <script setup>
 import { ref } from "vue";
+
 import wordsGenerator from "./util/wordsGenerator";
+import Congrats from "./components/Congrats.vue";
 
 const maxWords = ref(10);
 
@@ -47,7 +50,6 @@ const handleChange = (e) => {
 };
 
 const checkWord = (w, c = null) => {
-  console.log(w.startsWith(c), w, c);
   return w.startsWith(c) ? "correct" : "wrong";
 };
 </script>
@@ -67,4 +69,9 @@ ul {
 .wrong {
   color: rgb(116, 116, 116);
 }
+
+.blur {
+  filter: blur(5px);
+}
 </style>
+./components/Congrats.vue
