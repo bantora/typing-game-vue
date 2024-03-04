@@ -2,8 +2,10 @@ import { faker } from "@faker-js/faker";
 
 const wordsGenerator = (max) => {
   let words = [];
-  for (let i = 0; i <= max; i++) {
-    words.push(faker.word.sample({ length: { min: 5, max: 7 } }));
+  while (words.length != 20) {
+    const newWord = faker.word.sample({ length: { min: 5, max: 7 } });
+
+    if (!words.find((v) => v === newWord)) words.push(newWord);
   }
 
   return words;
