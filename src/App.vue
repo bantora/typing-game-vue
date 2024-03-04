@@ -3,7 +3,7 @@
   <div>Typing Game</div>
   <!-- Typing Options -->
   <div>
-    <input @input="handleInput" />
+    <input @input="handleInput" @focus="setBlur(false)" @blur="setBlur(true)" />
     <select name="max" @change="handleChange">
       <option value="10">10</option>
       <option value="15">15</option>
@@ -33,6 +33,10 @@ const typedword = ref("");
 
 const words = ref(wordsGenerator(maxWords.value));
 
+const notFocused = ref(true);
+
+const setBlur = (bool) => (notFocused.value = bool);
+
 const handleInput = (e) => {
   const foundValue = words.value.find((d) => d == e.target.value);
 
@@ -50,6 +54,7 @@ const handleChange = (e) => {
 };
 
 const checkWord = (w, c = null) => {
+  if (notFocused.value) return "blur";
   return w.startsWith(c) ? "correct" : "wrong";
 };
 </script>
@@ -74,4 +79,3 @@ ul {
   filter: blur(5px);
 }
 </style>
-./components/Congrats.vue
